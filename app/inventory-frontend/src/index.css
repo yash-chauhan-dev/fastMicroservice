@@ -1,0 +1,7 @@
+.fixed-header thead th {
+  /* the thead selector is required because there are th elements in the body */
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background-color: white;
+}
