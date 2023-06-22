@@ -1,7 +1,12 @@
-.fixed-header thead th {
-  /* the thead selector is required because there are th elements in the body */
-  position: sticky;
-  top: 0;
-  z-index: 10;
-  background-color: white;
+.table>thead>tr>th {
+  border-bottom-color: rgb(230, 230, 230);
+}
+
+table {
+  border-collapse: separate;
+
+}
+
+.gridTemp {
+  grid-template-columns: 1fr 2fr
 }

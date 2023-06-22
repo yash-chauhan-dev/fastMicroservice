@@ -6,7 +6,7 @@ key = "order_completed"
 group = "inventory-group"
 
 try:
-    redis.xgroup_create(key, group)
+    redis.xgroup_create(key, group, mkstream=True)
 except Exception:
     print("Group already exist!!")
 
@@ -19,12 +19,12 @@ while True:
             for result in results:
                 obj = result[1][0][1]
                 product = Product.get(obj["product_id"])
-                try:
-                    print(product)
+                print(product)
+                if int(obj["quantity"]) <= product.quantity:
                     product.quantity = product.quantity - int(obj["quantity"])
                     product.save()
-                except Exception:
+                else:
                     redis.xadd("refund_order", obj, "*")
-    except Exception as e:
-        print(str(e))
+    except Exception:
+        redis.xadd("refund_order", obj, "*")
     time.sleep(1)
