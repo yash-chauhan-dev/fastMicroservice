@@ -1,0 +1,4 @@
+fastapi
+uvicorn
+redis_om
+python-dotenv

@@ -1,0 +1,12 @@
+.table>thead>tr>th {
+  border-bottom-color: rgb(230, 230, 230);
+}
+
+table {
+  border-collapse: separate;
+
+}
+
+.gridTemp {
+  grid-template-columns: 1fr 2fr
+}
